@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite o valor presente: ");
+        double valorPresente = double.Parse(Console.ReadLine());
+
+        Console.Write("Digite a taxa de juros anual: ");
+        double taxaJurosAnual = double.Parse(Console.ReadLine());
+
+        Console.Write("Digite o valor futuro desejado: ");
+        double valorFuturoDesejado = double.Parse(Console.ReadLine());
+
+        double taxaJuros = taxaJurosAnual / 100.0;
+
+        double meses = 8;
+        double dias = 10;
+        double anos = meses / 12.0 + dias / 365.0;
+
+        double valorFuturo = valorPresente * Math.Pow(1 + taxaJuros / 1.0, anos);
+
+        double rendimentoFuturo = valorFuturoDesejado - valorFuturo;
+
+        Console.WriteLine("\nTabela de Cálculo:");
+        Console.WriteLine($"Valor Presente: {valorPresente:C}");
+        Console.WriteLine($"Taxa de Juros Anual: {taxaJurosAnual}%");
+        Console.WriteLine($"Período: {meses} meses e {dias} dias ({anos:F2} anos)");
+        Console.WriteLine($"Valor Futuro Desejado: {valorFuturoDesejado:C}");
+        Console.WriteLine($"Rendimento Futuro: {rendimentoFuturo:C}");
+    }
+}
