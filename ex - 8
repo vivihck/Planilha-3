@@ -1,0 +1,40 @@
+using System;
+
+namespace CalculoInvestimento
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Digite o valor inicial do investimento: ");
+            double valorInicial = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Digite a taxa de juros anual (em %): ");
+            double taxaJurosAnual = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Digite o período em meses: ");
+            int periodoMeses = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\nTabela de Rendimento:");
+            Console.WriteLine("+------+-----------------+-----------------+-----------------+");
+            Console.WriteLine("| Mês   | Valor Inicial  | Juros Acumulado | Valor Final     |");
+            Console.WriteLine("+------+-----------------+-----------------+-----------------+");
+
+            double valorAtual = valorInicial;
+            double taxaJurosMensal = taxaJurosAnual / 12 / 100;
+
+            for (int mes = 1; mes <= periodoMeses; mes++)
+            {
+
+                double jurosAcumulado = valorAtual * taxaJurosMensal;
+                double valorFinal = valorAtual + jurosAcumulado;
+
+                Console.WriteLine($"| {mes,2:D2}    | {valorAtual,15:C} | {jurosAcumulado,15:C} | {valorFinal,15:C} |");
+
+                valorAtual = valorFinal;
+            }
+
+            Console.WriteLine("+------+-----------------+-----------------+-----------------+");
+        }
+    }
+}
